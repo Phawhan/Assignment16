@@ -1,0 +1,13 @@
+#dropDown{
+    width: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    border: 2px solid black;
+}
+input{
+    width: 200px;
+}
+select{
+    width: 100px;
+}

@@ -1,0 +1,12 @@
+<div class="dropDown">
+<form [formGroup]="dropDownForm" id="dropDown">
+  <!-- newformgroup for common component -->
+    <select #selectType formControlName="addElementControl" (change)="selectedType(selectType.value)">
+      <!-- new form control for  -->
+      <option *ngFor="let item of addTypes">{{item}}</option>
+    </select>
+    <input type="text" formControlName="addElementValueControl" #adddata placeholder="Add Data" (keyup.enter)="sendElement()">
+</form>
+<div *ngIf="addedElementStatus" class="error">Enter proper type and data</div>
+
+</div>

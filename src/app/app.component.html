@@ -1,0 +1,82 @@
+<div class="registerForm">
+  <div class="formHeading">Register User</div>
+  <form [formGroup]="formData" (ngSubmit)="submitForm(formData.value)">
+    <div class="formObject">
+      <!-- First Name -->
+      <label >First Name : </label> 
+      <input type="text" placeholder="Enter Firstname" formControlName="firstNameControl">
+    </div>
+    <div class="error">
+      <p *ngIf="getFirstName?.touched && getFirstName?.invalid">Enter proper fisrtname</p>
+    </div>
+    <div class="formObject">
+      <!-- Last Name -->
+      <label >Last Name : </label>
+      <input type="text" placeholder="Enter Lastname" formControlName="lastNameControl">
+    </div>
+    <div class="error">
+      <span *ngIf="getLastName?.touched && getLastName?.invalid">Enter proper lastname</span>
+    </div>
+    <div class="formObject">
+      <!-- User Name -->
+      <label >UserName : </label>
+      <input type="text" placeholder="Enter Username" formControlName="userNameControl">
+    </div>
+    <div class="error">
+      <span *ngIf="getUserName?.touched && getUserName?.invalid">enter proper Username</span>
+    </div>
+    <div class="formObject">
+      <!-- Age -->
+      <label >Age: </label>
+      <input type="number" placeholder="Enter Age" formControlName="ageControl">
+    </div>
+    <div class="error">
+      <span *ngIf="getAge?.touched && getAge?.invalid">Enter proper age</span>
+    </div>
+    <div class="formObject">
+      <!-- E-mail Id -->
+      <label>E-mail Id: </label>
+      <input type="text" placeholder="Enter Mail Id" formControlName="mailIdControl">
+    </div>
+    <div class="error">
+      <span *ngIf="getMailId?.touched && getMailId?.invalid">Enter proper Mail ID</span>
+    </div>
+    <div class="formObject">
+      <!-- Phone Number -->
+      <label>Phone Number : </label>
+      <input type="text" placeholder="Enter Phone Number" formControlName="phoneNumberControl">
+    </div>
+    <div class="error">
+      <span *ngIf="getPhoneNumber?.touched && getPhoneNumber?.invalid">Enter proper Phone Number</span>
+    </div>
+    <div class="formObject" (keydown.tab)="onAdd()">
+      <!-- Additional elemets -->
+       <label>Add Additional Data :</label>
+      <input type="text" placeholder="Enter Additional Element" formControlName="addedElementControl">
+    </div>
+    <div class="error">
+      <span *ngIf="getAddedElement?.touched && getAddedElement?.invalid" >enter proper additional data</span>
+    </div>
+    <app-dropdown *ngIf="getAddedElement?.valid" (addedElementValueEmitter)="getValue($event)" (addedElementStatusEmitter)="getStatus($event)">
+      <!-- common component -->
+    </app-dropdown>
+    <div *ngIf="submitStatus">
+      <div class="formObject">
+        <!-- addedElement printing-->
+        <span>Added Element :</span>
+        <span>{{addedElement}}</span>
+      </div>
+      <div class="formObject">
+        <!-- Added value  printing-->
+        <span>Added Value :</span>
+        <span>{{addedElementValue}}</span>
+      </div>
+    </div>
+    <div class="buttons">
+      <!-- buttons -->
+      <button type="reset" >Reset</button>
+      <button type="submit" [disabled]="formData.invalid">Submit</button>
+    </div>
+  </form>
+  <router-outlet></router-outlet>
+</div>
